@@ -1,0 +1,56 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+button{
+    width: 100%;
+    height: 100%; 
+    border: none;
+    cursor: pointer;
+}
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.leftDiv{
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+
+}
+
+.rightDiv{
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    display: flex;
+}
+
+.square{
+    width: 400px; 
+    height: 400px; 
+    background-color: white;
+}
+
+.column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.redButton{
+    background-color: #f44336;
+}
+.greenButton{
+    background-color: #4caf50;
+}
+.blueButton{
+    background-color: #2196f3;
+}
+.yellowButton{
+    background-color: #ffeb3b;
+}
