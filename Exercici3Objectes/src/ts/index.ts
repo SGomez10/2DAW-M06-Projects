@@ -1,4 +1,4 @@
-/*
+
 function diaDeLaSetmana() {
     const input = document.getElementById('data') as HTMLInputElement;   //Recogemos el valor del formulario mediante el id. Es const porque porque una vez recogido no va a cambiar
     const regexp = /^\d{2}\/\d{2}\/\d{4}$/; //Creamos el patrón de carácteres que va tener nuestra fecha.
@@ -19,8 +19,9 @@ function diaDeLaSetmana() {
     }
     
 }
-*/
 
+
+/*
 function modificarBom(){
     const input = document.getElementById('data') as HTMLInputElement;
 
@@ -36,3 +37,4 @@ function modificarBom(){
         }
     }
 }
+*/
