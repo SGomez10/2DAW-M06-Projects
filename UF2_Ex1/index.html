@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tienda</title>
+    <script src="./built/UF2Ex1.js"></script>
+</head>
+<body>
+    <h1>MercaRoba</h1>
+    <form>
+        <label for="categoria">Categoría:</label><br>
+        <input type="text" id="categoria" placeholder="Inserte la categoria"><br><br>
+        <button type="button" onclick="afegirCategoria()">Insertar</button><br><br>
+
+        <label for="producte">Producte:</label><br>
+        <input type="text" id="producte" placeholder="Inserte el producto"><br><br>
+        <button type="button" onclick="afegirProducte()">Afegir</button>
+        <button type="button" onclick="eliminarProducte()">Eliminar</button>
+        
+    </form>
+    <div>
+        <h1>Mostrar las categorías:</h1>
+        <p id="cat"></p>
+        <button type="button" onclick="mostrarCategories()">Mostrar</button>
+    </div>
+
+    <div>
+        <h1>Mostrar los productos:</h1>
+        <p id="prod"></p>
+        <button type="button" onclick="mostrarProductes()">Mostrar tots</button>
+    </div>
+
+
+</body>
+</html>
