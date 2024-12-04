@@ -12,10 +12,17 @@
         <button type="button" onclick="afegirCategoria()">Insertar</button><br><br>
 
         <label for="producte">Producte:</label><br>
-        <input type="text" id="producte" placeholder="Inserte el producto"><br><br>
+        <input type="text" id="producte" placeholder="Inserte el producto">
+        <input type="number" id="stock" placeholder="Inserte la cantidad"><br><br>
         <button type="button" onclick="afegirProducte()">Afegir</button>
-        <button type="button" onclick="eliminarProducte()">Eliminar</button>
+        <button type="button" onclick="eliminarProducte()">Eliminar</button><br><br>
         
+        <label for="ventaProd">Venta:</label><br>
+        <input type="text" id="producteVenta" placeholder="Producto de la tienda">
+        <input type="number" id="precio" placeholder="precio del producto">
+        <button type="button" onclick="ventaProd()">Vender</button>
+
+
     </form>
     <div>
         <h1>Mostrar las categorías:</h1>

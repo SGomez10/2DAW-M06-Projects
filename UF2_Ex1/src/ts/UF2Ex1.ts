@@ -1,5 +1,5 @@
 let categoriesSet:Set<string> = new Set<string>();
-let productesSet:Set<string> = new Set<string>();
+let productesMap:Map<string,number> = new Map<string,number>();
 
 function afegirCategoria(){
 
@@ -21,26 +21,55 @@ function mostrarCategories(){
 }
 
 function afegirProducte(){
-    const producte: HTMLInputElement | null = document.getElementById("producte") as HTMLInputElement;  
+    const producte: HTMLInputElement | null = document.getElementById("producte") as HTMLInputElement;
+    const stock: HTMLInputElement | null = document.getElementById("stock") as HTMLInputElement;
     let prodVal:string = producte.value;
+    let stockProd: number = Number(stock.value);
+    
     if(prodVal){
-        productesSet.add(prodVal);
+        productesMap.set(prodVal,stockProd)
     }
+
 }
 
 function mostrarProductes(){
 
     document.getElementById("prod")!.innerHTML="";
-    for (const value of productesSet){
-        document.getElementById("prod")!.innerText += "\n" + value;
+    for (const [key,value] of productesMap){
+        document.getElementById("prod")!.innerText +="\nCantidad de "+ key + " = " + value.toString();
     }
 }
 
 function eliminarProducte(){
-    const producte: HTMLInputElement | null = document.getElementById("producte") as HTMLInputElement;  
+    const producte: HTMLInputElement | null = document.getElementById("producte") as HTMLInputElement;
+    const stock: HTMLInputElement | null = document.getElementById("stock") as HTMLInputElement;
+
     let prodVal:string = producte.value;
+    let stockProd: number = Number(stock.value);
+
     if(prodVal){
-        productesSet.delete(prodVal);
+        productesMap.delete(prodVal);
     }
+
+}
+
+function ventaProd(){
+
+    const producte: HTMLInputElement | null = document.getElementById("producteVenta") as HTMLInputElement;
+    const precio: HTMLInputElement | null = document.getElementById("precio") as HTMLInputElement;
+
+    let prodVal:string = producte.value;
+    let precioProd: number = Number(precio.value);
+
+    if(productesMap.has(prodVal) == false || isNaN(precioProd)){
+        alert("Has introducido campos erroneos")
+        return;
+    }else{
+        productesMap.set(prodVal, productesMap.get(prodVal)! -1)
+        if(productesMap.get(prodVal)!<=0){
+            productesMap.delete(prodVal)
+        }
+    }
+
 
 }
