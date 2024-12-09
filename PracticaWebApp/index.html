@@ -5,22 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="built/PracticaWebApp.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/css/estilos.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="init()">
     <h1>Videoclub Paco</h1>
     <h1>¡Bienvenido a nuestra web!</h1>
     <p>Para poder utilizar nuestros servicios debes introducir el nombre de una película. En caso de necesitar un videojuego,<br>
     debes introducir el nombre del juego seguido de una coma y su plataforma. <b>¡Gracias por usar nuestros servicios!</b></p>
     <form>
         <label for="producto">Escribe aquí tu consulta:</label><br>
-        <input type="text" id="pelicula" name="producto" placeholder="Escribe aquí">
-        <button type="submit" onclick="introducirProducto()">Agregar</button>
+        <input type="text" id="producto" name="producto" placeholder="Escribe aquí la película o videojuego">
+        <button type="button" onclick="procesarInput()">Agregar</button>
     </form>
 
     <h2>Nuestros clientes</h2><br>
     <ul id="ListaClientes"></ul>
 
     <h2>Ver nuestros productos</h2><br>
+    <div id="contenidoListas"></div><br>
+    
+    <button onclick="showProduct('peliculas')">Ver películas</button>
+    <button onclick="showProduct('juegos')">Ver juegos</button>
+    <button onclick="showProduct('ambos')">Ver juegos y películas</button>
+
 </body>
 </html>
