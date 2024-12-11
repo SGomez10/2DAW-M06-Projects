@@ -15,7 +15,7 @@ const isValidEmail = (email: string): boolean => {
 }
 
 function loadClientes(clientesMap: Map<string, string>) {
-    let listaClientes = document.getElementById('ListaClientes')!;
+    let listaClientes:HTMLElement = document.getElementById('ListaClientes')!;
     listaClientes.innerHTML = '';
     clientesMap.forEach((email, name) => {
         if (isValidEmail(email)) {
@@ -78,31 +78,33 @@ function showProduct(type:string):void{
     if (type === 'juegos') {
         // Crear la tabla
         let tabla: HTMLTableElement = document.createElement('table');
-        
         // Crear encabezado con el texto "Juegos"
         let encabezado: HTMLTableRowElement = tabla.insertRow();
         encabezado.insertCell(0).innerText = "Juegos y plataforma";
     
         // Recorrer listaJuegos y agregar las filas con key y value en la misma columna
-        for (let [key, value] of listaJuegos) {
+        listaJuegos.forEach((value, key) => {
             let row: HTMLTableRowElement = tabla.insertRow();
             row.insertCell(0).innerText = `${key} - ${value}`; // Combina key y value en una sola celda
-        }
-    
+        });
         // Agregar la tabla al div
-        divShow.appendChild(tabla);    
+        divShow.appendChild(tabla);
+
     }else if (type === 'peliculas') {
+
         let tabla:HTMLTableElement = document.createElement('table');
         let encabezado: HTMLTableRowElement = tabla.insertRow();
         encabezado.insertCell(0).innerText = "Películas";
 
-        for (let value of listPeliculas) {
-            let row:HTMLTableRowElement = tabla.insertRow();
+        listPeliculas.forEach((value) => {
+            let row: HTMLTableRowElement = tabla.insertRow();
             row.insertCell(0).innerText = value;
-        }
+        });
+        
         divShow.appendChild(tabla);
+
     } else if (type === 'ambos') {
-        // Crear una tabla única
+        // Creo una tabla 
         let tabla: HTMLTableElement = document.createElement('table');
         
         // Crear una fila para los encabezados de las columnas
@@ -111,7 +113,7 @@ function showProduct(type:string):void{
         encabezado.insertCell(1).innerText = "Juegos y Plataforma";
     
         // Obtener la longitud máxima entre juegos y películas para recorrer ambos
-        let maxLength = Math.max(listPeliculas.size, listaJuegos.size);
+        let maxLength:number = Math.max(listPeliculas.size, listaJuegos.size);
         
         // Recorrer ambos arrays y agregar filas a la tabla
         for (let i:number = 0; i < maxLength; i++) {
@@ -126,7 +128,7 @@ function showProduct(type:string):void{
             }
     
             // Agregar juego y plataforma a la columna de juegos
-            let juego = Array.from(listaJuegos.entries())[i];
+            let juego:[string,string] = Array.from(listaJuegos.entries())[i];
             if (juego) {
                 row.insertCell(1).innerText = `${juego[0]} - ${juego[1]}`;  // Nombre del juego y plataforma
             } else {
