@@ -9,11 +9,19 @@ let clientesMap:Map <string, string> = new Map([
 let listPeliculas:Set<string> = new Set<string>();
 let listaJuegos:Map<string,string> = new Map();
 
+/*
+Función que recibe el email del usuario y comprueba que tiene el formato
+correcto mediante el uso del RegExp, dando true si lo cumple.
+*/
 const isValidEmail = (email: string): boolean => {
     const emailPattern:RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
 }
-
+/*
+Función que recibe el contenido de la lista de clientes, y comprueba si 
+el mail es válido para poder mostrarse como cliente en el front, en caso negativo,
+no se muestra.
+*/
 function loadClientes(clientesMap: Map<string, string>) {
     let listaClientes:HTMLElement = document.getElementById('ListaClientes')!;
     listaClientes.innerHTML = '';
@@ -25,7 +33,10 @@ function loadClientes(clientesMap: Map<string, string>) {
         }
     });
 }
-
+/*
+Función que va a ser llamada al iniciar la aplicación web que carga los clientes y
+añade contenido a listPeliculas y listaJuegos
+*/
 function init(){
     loadClientes(clientesMap);
     listPeliculas.add('La matanza de texas');
@@ -35,7 +46,11 @@ function init(){
     listaJuegos.set("Bloordborne","PS4");
     listaJuegos.set("Halo Reach","XBOX");
 }
-
+/*
+Función que recibe el contenido del input del html y dependiendo de si tiene una coma o no,
+divie el contenido en dos Strings con la coma como punto de división o no y llama a la función
+addProduct()
+*/
 function procesarInput(){
 
     let productoInput:HTMLInputElement = document.getElementById("producto")! as HTMLInputElement;
@@ -56,7 +71,10 @@ function procesarInput(){
     }
     productoInput.value="";
 }
-
+/*
+Función que recibe como mínimo un producto y dependiendo de si es un producto o un producto
+y una plataforma, almacena el contenido en el map listaJuegos o en el set listPeliculas
+*/
 function addProduct(producto:string): void;
 function addProduct(producto:string, plataforma:string): void;
 function addProduct(producto:string, plataforma?:string){
@@ -67,7 +85,10 @@ function addProduct(producto:string, plataforma?:string){
     listPeliculas.add(producto);
    }
 }
-
+/*
+Función que dependiendo del botón pulsado en el html, se recibe un string como input
+para crear la tabla que toque y mostrar la lista que se deba.
+*/
 function showProduct(type:string):void{
 
     let divShow:HTMLElement = document.getElementById("contenidoListas") as HTMLElement;

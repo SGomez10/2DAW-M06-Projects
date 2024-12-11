@@ -7,10 +7,19 @@ var clientesMap = new Map([
 ]);
 var listPeliculas = new Set();
 var listaJuegos = new Map();
+/*
+Función que recibe el email del usuario y comprueba que tiene el formato
+correcto mediante el uso del RegExp, dando true si lo cumple.
+*/
 var isValidEmail = function (email) {
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
 };
+/*
+Función que recibe el contenido de la lista de clientes, y comprueba si
+el mail es válido para poder mostrarse como cliente en el front, en caso negativo,
+no se muestra.
+*/
 function loadClientes(clientesMap) {
     var listaClientes = document.getElementById('ListaClientes');
     listaClientes.innerHTML = '';
@@ -22,6 +31,10 @@ function loadClientes(clientesMap) {
         }
     });
 }
+/*
+Función que va a ser llamada al iniciar la aplicación web que carga los clientes y
+añade contenido a listPeliculas y listaJuegos
+*/
 function init() {
     loadClientes(clientesMap);
     listPeliculas.add('La matanza de texas');
@@ -31,6 +44,11 @@ function init() {
     listaJuegos.set("Bloordborne", "PS4");
     listaJuegos.set("Halo Reach", "XBOX");
 }
+/*
+Función que recibe el contenido del input del html y dependiendo de si tiene una coma o no,
+divie el contenido en dos Strings con la coma como punto de división o no y llama a la función
+addProduct()
+*/
 function procesarInput() {
     var productoInput = document.getElementById("producto");
     var valorInput = productoInput.value;
@@ -56,6 +74,10 @@ function addProduct(producto, plataforma) {
         listPeliculas.add(producto);
     }
 }
+/*
+Función que dependiendo del botón pulsado en el html, se recibe un string como input
+para crear la tabla que toque y mostrar la lista que se deba.
+*/
 function showProduct(type) {
     var divShow = document.getElementById("contenidoListas");
     if (!divShow)
